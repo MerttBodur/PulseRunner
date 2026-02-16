@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
 
     public float groundCheckRadius = 0.01f;
+
+    public int coin = 0;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -51,8 +53,7 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
         }
 
-        Debug.Log("Grounded: " + isGrounded);
-        if (Input.GetKeyDown(KeyCode.Space)) Debug.Log("Space pressed");
+        Debug.Log(coin.ToString());
 
     }
 
