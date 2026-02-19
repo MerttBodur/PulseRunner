@@ -1,1 +1,3 @@
-# MyGame
+# Pulse Runner
+My 2D Platform Game Prototype.
+Still Developing...
