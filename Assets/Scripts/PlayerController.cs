@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     Animator anim;
 
-    public float groundCheckRadius = 0.1f;
+    public float groundCheckRadius = 0.2f;
     public float coyoteTime = 0.1f;
     float coyoteTimeCounter;
     public int coin = 0;
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        float moveInput = Input.GetAxisRaw("Horizontal"); //right 1, left -1
+        float moveInput = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
 
         if (moveInput > 0 && !facingRight)
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
             Flip();
         }
 
-        isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.15f, groundLayer);
+        isGrounded = isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
         // Coyote time sayacý
         if (isGrounded)
@@ -63,8 +63,6 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             coyoteTimeCounter = 0f;   // ayný coyote süresi içinde tekrar tekrar zýplamasýn
         }
-
-        Debug.Log(coin.ToString());
 
         if (Mathf.Abs(moveInput) < 0.01f)
         {
@@ -89,14 +87,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Spike")
         {
-            Debug.Log("Made contact with the spike.");
-
             SceneManager.LoadScene(0);
         }
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("Made contact with the enemy!");
-
             SceneManager.LoadScene(0);
         }
     }
