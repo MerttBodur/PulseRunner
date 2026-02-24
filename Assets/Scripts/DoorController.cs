@@ -35,5 +35,13 @@ public class DoorController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
+    public bool isDoorOpen
+    {
+        get
+        {
+            if (player == null) return false;
+            return player.coin >= requiredCoin;
+        }
+    }
 
 }

@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public float coyoteTime = 0.1f;
     float coyoteTimeCounter;
     public int coin = 0;
+    public static int deathCount = 0;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -87,6 +88,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Spike" || collision.gameObject.tag == "Enemy")
         {
+
+            deathCount++;
+
             int index = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(index);
         }
