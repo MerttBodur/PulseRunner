@@ -85,13 +85,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Spike")
+        if (collision.gameObject.tag == "Spike" || collision.gameObject.tag == "Enemy")
         {
-            SceneManager.LoadScene(0);
-        }
-        if (collision.gameObject.tag == "Enemy")
-        {
-            SceneManager.LoadScene(0);
+            int index = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(index);
         }
     }
 

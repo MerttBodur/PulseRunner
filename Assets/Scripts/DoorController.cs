@@ -32,7 +32,7 @@ public class DoorController : MonoBehaviour
     {
         if (collision.CompareTag("Player") && player.coin >= requiredCoin)
         {
-            SceneManager.LoadScene("Level2");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
