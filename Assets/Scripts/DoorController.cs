@@ -5,6 +5,7 @@ public class DoorController : MonoBehaviour
     public int requiredCoin = 30;
     public Collider2D doorCollider;
     private PlayerController player;
+
     void Start()
     {
         player = FindObjectOfType<PlayerController>();

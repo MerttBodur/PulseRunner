@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : MonoBehaviour
@@ -10,6 +11,11 @@ public class UIManager : MonoBehaviour
     public TMP_Text deathCount;
     public TMP_Text doorStatus;
 
+    public Image doorStateIcon;  // tik / çarpý
+
+    public Sprite doorOpenSprite; // tik
+    public Sprite doorClosedSprite; // X
+
     void Update()
     {
         if (player != null)
@@ -20,10 +26,12 @@ public class UIManager : MonoBehaviour
 
         if (door != null)
         {
-            if (door.isDoorOpen)
-                doorStatus.text = "Door: OPEN";
-            else
-                doorStatus.text = "Door: LOCKED";
+            bool open = door.isDoorOpen;
+
+            if (doorStateIcon != null)
+            {
+                doorStateIcon.sprite = open ? doorOpenSprite : doorClosedSprite;
+            }
         }
     }
 }
