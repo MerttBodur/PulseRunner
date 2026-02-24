@@ -20,8 +20,8 @@ public class UIManager : MonoBehaviour
     {
         if (player != null)
         {
-            coinCount.text = "Coin: " + player.coin.ToString();
-            deathCount.text = "Deaths: " + PlayerController.deathCount.ToString();
+            coinCount.text = player.coin.ToString();
+            deathCount.text = PlayerController.deathCount.ToString();
         }
 
         if (door != null)
